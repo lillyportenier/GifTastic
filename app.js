@@ -1,8 +1,9 @@
    
-var keyWord = "cat"
+var keyWord;
 var searchBox = ["sponge+bob", "patrick", "plankton", "sandy", "krusty+krab", "squidward"];
 var button;
 var buttonChoice;
+var searchItem;
 
 var apiKey = "&api_key=sOTf3dAreZfWgWzxwIRYmTo7r9ii8Z3g";
 var searchKeyword = "&q="+ keyWord;
@@ -23,20 +24,41 @@ function makeButtons() {
     }
     $(".button-choice").on("click", function() {
        buttonChoice = $(this).data("id");
+       keyWord = buttonChoice;
+       
+    //    console.log(buttonChoice);
     });
 };
 console.log(buttonChoice);
 
+$("#search-button").on("click", function() { 
+    if ($("#search-bar").val() === ""){
 
-// conosle.log(buttonValue);
+    }
+    else {
+        searchItem = $("#search-bar").val().trim();
+        $("#button-div").html("");
+        searchBox.push(searchItem);
+        makeButtons();
+        $("#gif-dump").html("");
+        $("#search-bar").val("");
+    }
+});
 
-$.ajax({
-url: queryURL,
-method: "GET"
-})
-    .then(function(response) {
-    console.log(response);
-    });
+// function showGif() {
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//         })
+//             .then(function(response) {
+//             console.log(response);
+//             });
+            
+            
+// }
+
+
+
 
 
 //
