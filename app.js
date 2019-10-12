@@ -1,8 +1,8 @@
    
 var keyWord = "cat"
 var searchBox = ["sponge+bob", "patrick", "plankton", "sandy", "krusty+krab", "squidward"];
-var buttonDiv;
-var userChoice;
+var button;
+var buttonChoice;
 
 var apiKey = "&api_key=sOTf3dAreZfWgWzxwIRYmTo7r9ii8Z3g";
 var searchKeyword = "&q="+ keyWord;
@@ -15,17 +15,18 @@ window.onload = function(){
 
 function makeButtons() {
     for (i = 0; i < searchBox.length; i++) {
-        buttonDiv = $("#button-div");
-        buttonDiv.append("<button>" + searchBox[i] + "</button>");
-        buttonDiv.attr("data-id", i);
-        buttonValue = searchBox[i];
+        button = $("<button>");
+        button.text(searchBox[i]);
+        button.attr("data-id", searchBox[i]);
+        button.addClass("button-choice");
+        $("#button-div").append(button);
     }
-    buttonDiv.on("click", function() {
-        userChoice = $(this).data("id");
-
+    $(".button-choice").on("click", function() {
+       buttonChoice = $(this).data("id");
     });
-    console.log(userChoice);
 };
+console.log(buttonChoice);
+
 
 // conosle.log(buttonValue);
 
