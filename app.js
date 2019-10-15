@@ -25,13 +25,24 @@ function makeButtons() {
     $(".button-choice").on("click", function() {
        buttonChoice = $(this).data("id");
        keyWord = buttonChoice;
-       
-    //    console.log(buttonChoice);
+
+       $.ajax({
+        url: queryURL,
+        method: 'GET',
+      }).done((response) => {
+        console.log(response);
+        for(i = 0; i < response.data.length; i++){
+          $("#gif-dump").append( "<img src= " + response.data[i].images.original.url + "</div>");
+        };
+      });
+       console.log(keyWord);
     });
+    
 };
-console.log(buttonChoice);
+// console.log(buttonChoice);
 
 $("#search-button").on("click", function() { 
+    
     if ($("#search-bar").val() === ""){
 
     }
@@ -43,22 +54,20 @@ $("#search-button").on("click", function() {
         $("#gif-dump").html("");
         $("#search-bar").val("");
     }
+  
 });
 
-// function showGif() {
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//         })
-//             .then(function(response) {
-//             console.log(response);
-//             });
-            
-            
-// }
+$()
 
 
 
+
+ 
+
+
+
+
+//   "<div class= 'gif-div'>Rating: " + response.data[i].rating.toUpperCase() + "<br>" + "<img data-name= " + response.data[i].images.original.url + " src= " + response.data[i].images.original_still.url + " class= 'gif-img'></div>"
 
 
 //
