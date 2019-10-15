@@ -1,14 +1,14 @@
    
 var keyWord;
-var searchBox = ["sponge+bob", "patrick", "plankton", "sandy", "krusty+krab", "squidward"];
+var searchBox = ["Sponge bob", "Patrick", "Plankton", "Krusty krab", "Squidward", "Doodlebob", "Jellyfish jam", "Mermaid Man", "Squidville", "The great snail race", "Jellyfish hunter", "Pretty pattys", "Spongicus", "King neptune" ];
 var button;
 var buttonChoice;
 var searchItem;
 
+var queryURL;
 var apiKey = "&api_key=sOTf3dAreZfWgWzxwIRYmTo7r9ii8Z3g";
-var searchKeyword = "&q="+ keyWord;
 
-var queryURL = "http://api.giphy.com/v1/gifs/search?" + apiKey + searchKeyword;
+
 
 window.onload = function(){
     makeButtons();
@@ -25,6 +25,9 @@ function makeButtons() {
     $(".button-choice").on("click", function() {
        buttonChoice = $(this).data("id");
        keyWord = buttonChoice;
+       $("#gif-dump").html("");
+
+       queryURL = "http://api.giphy.com/v1/gifs/search?" + apiKey + "&q="+ keyWord;
 
        $.ajax({
         url: queryURL,
@@ -35,13 +38,10 @@ function makeButtons() {
           $("#gif-dump").append( "<img src= " + response.data[i].images.original.url + "</div>");
         };
       });
-       console.log(keyWord);
     });
-    
 };
-// console.log(buttonChoice);
 
-$("#search-button").on("click", function() { 
+function search() { 
     
     if ($("#search-bar").val() === ""){
 
@@ -55,24 +55,13 @@ $("#search-button").on("click", function() {
         $("#search-bar").val("");
     }
   
-});
+};
 
-$()
-
-
+$(document).on("click", "#search-button", search);
 
 
- 
-
-
-
-
-//   "<div class= 'gif-div'>Rating: " + response.data[i].rating.toUpperCase() + "<br>" + "<img data-name= " + response.data[i].images.original.url + " src= " + response.data[i].images.original_still.url + " class= 'gif-img'></div>"
-
-
-//
- 
-// http://api.giphy.com/v1/gifs/search?&api_key=sOTf3dAreZfWgWzxwIRYmTo7r9ii8Z3g&q=cat
-    
-    
-// 
+$(document).keypress(function(e) {
+    if (e.keyCode == 13) {   
+        search();   
+    }
+   });
