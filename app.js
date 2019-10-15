@@ -35,9 +35,21 @@ function makeButtons() {
       }).done((response) => {
         console.log(response);
         for(i = 0; i < response.data.length; i++){
-          $("#gif-dump").append( "<img src= " + response.data[i].images.original.url + "</div>");
+          $("#gif-dump").append( "<div class='rating'> Rating:" + response.data[i].rating.toUpperCase() + "<br>" + "<img src=" + response.data[i].images.original.url + "/>");
         };
       });
+
+      $("#gif-dump").on("click", function(){
+          var state = $(this).attr("data-state");
+          if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+          }
+         else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+          }
+      })
     });
 };
 
@@ -65,3 +77,9 @@ $(document).keypress(function(e) {
         search();   
     }
    });
+
+
+//    response.data[i].images.original.url 
+// response.data[i].images.original_still.url 
+
+

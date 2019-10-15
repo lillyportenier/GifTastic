@@ -1,0 +1,45 @@
+header{
+    background: url("https://www.bing.com/th?id=OIP.YMO500CrcMoZSiD-B1pA-QHaEK&w=213&h=160&c=7&o=5&dpr=2&pid=1.7");
+}
+#title-image {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    margin-bottom: 15px;
+}
+#buttons-div{
+    margin: 5px;
+    margin-bottom: 10px;
+   text-align: center;
+}
+button{
+    border: darkgray solid 1px;
+    border-radius: 4px;
+    margin: 3px;
+    display: inline; 
+}
+button:hover{
+    background-image: linear-gradient(to right, rgb(245, 241, 174) 0%, rgb(220, 247, 239) 51%, rgb(245, 241, 174) 100%);
+    border: darkblue;
+
+
+}
+#search-button:hover {
+    background-image: linear-gradient(to right, rgb(167, 193, 247) 0%, rgb(220, 247, 239) 51%, rgb(167, 193, 247) 100%);
+    border: darkblue;
+}
+body {
+    background: rgb(255, 255, 96);
+}
+#gif-dump {
+    display: block;
+    flex-wrap: wrap;
+}
+#gif-dump img {
+    
+}
+.rating {
+    margin: 10px;
+}
