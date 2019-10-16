@@ -1,14 +1,17 @@
 header{
     background: url("https://www.bing.com/th?id=OIP.YMO500CrcMoZSiD-B1pA-QHaEK&w=213&h=160&c=7&o=5&dpr=2&pid=1.7");
+    border-bottom: 2px solid darkblue;
+    margin-bottom: 5px;
 }
 #title-image {
     width: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 150px;
+    height: 200px;
     margin-bottom: 15px;
 }
+
 #buttons-div{
     margin: 5px;
     margin-bottom: 10px;
@@ -34,11 +37,13 @@ body {
     background: rgb(255, 255, 96);
 }
 #gif-dump {
-    display: block;
     flex-wrap: wrap;
+    align-content: flex-start;
+    margin: 15px;
+    justify-content: space-around;
 }
 #gif-dump img {
-    
+    display: 
 }
 .rating {
     margin: 10px;

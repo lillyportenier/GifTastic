@@ -4,6 +4,7 @@ var searchBox = ["Sponge bob", "Patrick", "Plankton", "Krusty krab", "Squidward"
 var button;
 var buttonChoice;
 var searchItem;
+var img;
 
 var queryURL;
 var apiKey = "&api_key=sOTf3dAreZfWgWzxwIRYmTo7r9ii8Z3g";
@@ -21,37 +22,44 @@ function makeButtons() {
         button.attr("data-id", searchBox[i]);
         button.addClass("button-choice");
         $("#button-div").append(button);
-    }
-    $(".button-choice").on("click", function() {
-       buttonChoice = $(this).data("id");
-       keyWord = buttonChoice;
-       $("#gif-dump").html("");
-
-       queryURL = "http://api.giphy.com/v1/gifs/search?" + apiKey + "&q="+ keyWord;
-
-       $.ajax({
-        url: queryURL,
-        method: 'GET',
-      }).done((response) => {
-        console.log(response);
-        for(i = 0; i < response.data.length; i++){
-          $("#gif-dump").append( "<div class='rating'> Rating:" + response.data[i].rating.toUpperCase() + "<br>" + "<img src=" + response.data[i].images.original.url + "/>");
-        };
-      });
-
-      $("#gif-dump").on("click", function(){
-          var state = $(this).attr("data-state");
-          if (state === "still") {
-            $(this).attr("src", $(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-          }
-         else {
-            $(this).attr("src", $(this).attr("data-still"));
-            $(this).attr("data-state", "still");
-          }
-      })
-    });
+    }  
 };
+$(document).on("click", ".button-choice", function() {
+    buttonChoice = $(this).data("id");
+    keyWord = buttonChoice;
+    $("#gif-dump").html("");
+
+    queryURL = "http://api.giphy.com/v1/gifs/search?" + apiKey + "&q="+ keyWord;
+
+    $.ajax({
+     url: queryURL,
+     method: 'GET',
+   }).done((response) => {
+     console.log(response);
+     for(i = 0; i < response.data.length; i++){
+         var img = $("<img /> ")
+         img.attr("src", response.data[i].images.original_still.url)
+         img.attr("data-still", response.data[i].images.original_still.url)
+         img.attr("data-animate", response.data[i].images.original.url)
+         img.attr("data-state", "still")
+         img.addClass("gif")
+         $("#gif-dump").append(img);
+     };
+   });
+  
+ });
+$(document).on("click", ".gif", function(){
+    var state = $(this).attr("data-state");
+    console.log("clicked");
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+   else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+});
 
 function search() { 
     
@@ -79,7 +87,12 @@ $(document).keypress(function(e) {
    });
 
 
+
+
+
+// "<img src=" + response.data[i].images.original.url + "data-state=animate" + response.data[i].images.original.url + "data-state=still" + response.data[i].images.original_still.url + "/>" 
+
 //    response.data[i].images.original.url 
 // response.data[i].images.original_still.url 
-
+ 
 
