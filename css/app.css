@@ -15,35 +15,44 @@ header{
 #buttons-div{
     margin: 5px;
     margin-bottom: 10px;
-   text-align: center;
+    text-align: center;
+    position: relative;
+    display: table;
+    
 }
 button{
-    border: darkgray solid 1px;
+    border: rgb(183, 177, 3) solid 1px;
     border-radius: 4px;
     margin: 3px;
-    display: inline; 
+    font-weight: 500;
+    padding: 5px;
 }
 button:hover{
-    background-image: linear-gradient(to right, rgb(245, 241, 174) 0%, rgb(220, 247, 239) 51%, rgb(245, 241, 174) 100%);
-    border: darkblue;
+    background-image: url("https://www.bing.com/th?id=OIP.N_VOFEeou6x1oynlWTbfcgHaHa&w=208&h=207&c=7&o=5&dpr=2&pid=1.7");
+}
+#search-bar {
+    padding: 4px;
+    border-color: rgb(244, 214, 93);
+    border:
+}
+#search-bar:focus {
+    box-shadow: 0 0 5px rgb(231, 243, 12);
+    border: 1px solid rgb(231, 243, 12);
 
 
 }
-#search-button:hover {
-    background-image: linear-gradient(to right, rgb(167, 193, 247) 0%, rgb(220, 247, 239) 51%, rgb(167, 193, 247) 100%);
-    border: darkblue;
-}
+
 body {
-    background: rgb(255, 255, 96);
+    background: rgb(176, 254, 233);
 }
 #gif-dump {
-    flex-wrap: wrap;
-    align-content: flex-start;
     margin: 15px;
-    justify-content: space-around;
 }
 #gif-dump img {
-    display: 
+ 
+}
+.gif {
+    justify-content: center;
 }
 .rating {
     margin: 10px;

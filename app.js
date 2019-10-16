@@ -38,11 +38,14 @@ $(document).on("click", ".button-choice", function() {
      console.log(response);
      for(i = 0; i < response.data.length; i++){
          var img = $("<img /> ")
+         var div = $("<div></div>")
          img.attr("src", response.data[i].images.original_still.url)
          img.attr("data-still", response.data[i].images.original_still.url)
          img.attr("data-animate", response.data[i].images.original.url)
          img.attr("data-state", "still")
          img.addClass("gif")
+         div.text("Rating: " + response.data[i].rating.toUpperCase())
+         $("#gif-dump").append(div);
          $("#gif-dump").append(img);
      };
    });
