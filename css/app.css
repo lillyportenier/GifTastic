@@ -1,3 +1,9 @@
+body {
+    /* background: rgb(0, 58, 159); */
+    background-image: url("seigaiha/seigaiha.png");
+    font-family: 'Raleway', sans-serif;
+
+}
 header{
     background: url("https://www.bing.com/th?id=OIP.YMO500CrcMoZSiD-B1pA-QHaEK&w=213&h=160&c=7&o=5&dpr=2&pid=1.7");
     border-bottom: 2px solid darkblue;
@@ -11,49 +17,74 @@ header{
     height: 200px;
     margin-bottom: 15px;
 }
+p {
+    margin-left: 7px;
+    margin-bottom: 3px;
+}
 
-#buttons-div{
-    margin: 5px;
-    margin-bottom: 10px;
+#button-div{
     text-align: center;
-    position: relative;
-    display: table;
-    
+    margin: 5px;
+    /* background-color: rgba(32, 32, 184, 0.571); */
+    background-color: rgba(0, 0, 128, 0.338);
+    border: 2px solid navy;
+    border-radius: 2px;
+    padding: 5px;
 }
 button{
-    border: rgb(183, 177, 3) solid 1px;
+    border: darkblue solid .5px;
     border-radius: 4px;
     margin: 3px;
     font-weight: 500;
     padding: 5px;
+    background-color: rgba(255, 255, 255, 0.671);
+}
+#search-button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 15px;
+    border: 1px darkblue solid;
+    margin: 7px;
+}
+.button-choice {
+    font-size: 12px;
+
 }
 button:hover{
     background-image: url("https://www.bing.com/th?id=OIP.N_VOFEeou6x1oynlWTbfcgHaHa&w=208&h=207&c=7&o=5&dpr=2&pid=1.7");
 }
 #search-bar {
     padding: 4px;
-    border-color: rgb(244, 214, 93);
-    border:
+    font-size: 14px;
+    border: darkblue solid 1px;
+    border-radius: 4px;
+
 }
 #search-bar:focus {
     box-shadow: 0 0 5px rgb(231, 243, 12);
     border: 1px solid rgb(231, 243, 12);
-
-
-}
-
-body {
-    background: rgb(176, 254, 233);
 }
 #gif-dump {
     margin: 15px;
-}
-#gif-dump img {
- 
+    padding: 20px;
+    flex-wrap: wrap;
 }
 .gif {
-    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .rating {
     margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    #title-image {
+        width: 80%;
+  }
+}
+@media only screen and (max-width: 450px) {
+    .gif {
+        height: 200px;
+        width: 200px;
+    }
 }

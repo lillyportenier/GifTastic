@@ -24,7 +24,7 @@ function makeButtons() {
         $("#button-div").append(button);
     }  
 };
-$(document).on("click", ".button-choice", function() {
+function ajaxWork() {
     buttonChoice = $(this).data("id");
     keyWord = buttonChoice;
     $("#gif-dump").html("");
@@ -37,12 +37,12 @@ $(document).on("click", ".button-choice", function() {
    }).done((response) => {
      console.log(response);
      for(i = 0; i < response.data.length; i++){
-         var img = $("<img /> ")
+         var img = $("<img/> ")
          var div = $("<div></div>")
-         img.attr("src", response.data[i].images.original_still.url)
+         img.attr("src", response.data[i].images.original.url)
          img.attr("data-still", response.data[i].images.original_still.url)
          img.attr("data-animate", response.data[i].images.original.url)
-         img.attr("data-state", "still")
+         img.attr("data-state", "animate")
          img.addClass("gif")
          div.text("Rating: " + response.data[i].rating.toUpperCase())
          $("#gif-dump").append(div);
@@ -50,7 +50,7 @@ $(document).on("click", ".button-choice", function() {
      };
    });
   
- });
+ };
 $(document).on("click", ".gif", function(){
     var state = $(this).attr("data-state");
     console.log("clicked");
@@ -77,10 +77,33 @@ function search() {
         $("#gif-dump").html("");
         $("#search-bar").val("");
     }
+    $("#gif-dump").html("");
+
+    queryURL = "http://api.giphy.com/v1/gifs/search?" + apiKey + "&q="+ searchItem;
+
+    $.ajax({
+        url: queryURL,
+        method: 'GET',
+      }).done((response) => {
+        console.log(response);
+        for(i = 0; i < response.data.length; i++){
+            var img = $("<img/>")
+            var div = $("<div></div>")
+            img.attr("src", response.data[i].images.original.url)
+            img.attr("data-still", response.data[i].images.original_still.url)
+            img.attr("data-animate", response.data[i].images.original.url)
+            img.attr("data-state", "animate")
+            img.addClass("gif")
+            div.text("Rating: " + response.data[i].rating.toUpperCase())
+            $("#gif-dump").append(div);
+            $("#gif-dump").append(img);
+        };
   
+    });
 };
 
 $(document).on("click", "#search-button", search);
+$(document).on("click", ".button-choice", ajaxWork);
 
 
 $(document).keypress(function(e) {
@@ -91,11 +114,4 @@ $(document).keypress(function(e) {
 
 
 
-
-
-// "<img src=" + response.data[i].images.original.url + "data-state=animate" + response.data[i].images.original.url + "data-state=still" + response.data[i].images.original_still.url + "/>" 
-
-//    response.data[i].images.original.url 
-// response.data[i].images.original_still.url 
- 
 
