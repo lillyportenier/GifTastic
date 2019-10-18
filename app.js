@@ -67,7 +67,7 @@ $(document).on("click", ".gif", function(){
 function search() { 
     
     if ($("#search-bar").val() === ""){
-
+        return;
     }
     else {
         searchItem = $("#search-bar").val().trim();
@@ -102,7 +102,12 @@ function search() {
     });
 };
 
-$(document).on("click", "#search-button", search);
+// function sea
+
+$(document).on("click", "#search-button", function(e) {
+    e.preventDefault();
+    search();   
+   });
 $(document).on("click", ".button-choice", ajaxWork);
 
 
